@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,11 +10,11 @@ import {
   Dimensions,
 } from 'react-native';
 import axios from 'axios';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import RenderHtml from 'react-native-render-html';
-import {colors} from '../../utils/colors';
-import {settings} from '../../utils/settings';
-import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
+import { colors } from '../../utils/colors';
+import { settings } from '../../utils/settings';
+import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
 import LottieView from 'lottie-react-native';
 
 const OurPublications = () => {
@@ -40,7 +40,7 @@ const OurPublications = () => {
         console.error(error);
       });
   }, []);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   if (isLoading) {
     return (
@@ -60,7 +60,7 @@ const OurPublications = () => {
 
   return (
     <View>
-      <ScrollView style={{backgroundColor: 'white'}}>
+      <ScrollView style={{ backgroundColor: 'white' }}>
         <View
           style={{
             position: 'relative',
@@ -74,7 +74,7 @@ const OurPublications = () => {
               width: '100%',
               backgroundColor: colors.darkPurple,
               borderBottomLeftRadius: Dimensions.get('screen').height / 4,
-              transform: [{scaleX: 1.2}],
+              transform: [{ scaleX: 1.2 }],
               borderBottomRightRadius: Dimensions.get('screen').height / 4,
             }}
           />
@@ -87,12 +87,9 @@ const OurPublications = () => {
               paddingTop: 50,
             }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <ArrowLeftIconOutline
-                width={25}
-                height={25}
-                left={3}
-                color="black"
-              />
+              <ArrowLeftIconOutline width={35}
+                height={35}
+                color="black" />
             </TouchableOpacity>
             <View />
           </View>
@@ -104,7 +101,7 @@ const OurPublications = () => {
           />
         </View>
         {content ? (
-          <View style={{padding: 20}}>
+          <View style={{ padding: 20 }}>
             <Text
               style={{
                 paddingTop: 20,
@@ -116,8 +113,8 @@ const OurPublications = () => {
             </Text>
             <RenderHtml
               contentWidth={width}
-              style={{fontSize: 20, fontWeight: '500'}}
-              source={{html: content.post}}
+              style={{ fontSize: 20, fontWeight: '500' }}
+              source={{ html: content.post }}
             />
           </View>
         ) : (
@@ -137,7 +134,7 @@ const OurPublications = () => {
                 key={index}
                 style={styles.homeScreenCardContainer}
                 onPress={() =>
-                  navigation.navigate('ContentScreen', {slug: content.slug})
+                  navigation.navigate('ContentScreen', { slug: content.slug })
                 }>
                 <Image
                   source={{
@@ -153,7 +150,7 @@ const OurPublications = () => {
                     borderRadius: 20,
                   }}
                 />
-                <Text style={{textAlign: 'center', paddingTop: 15}}>
+                <Text style={{ textAlign: 'center', paddingTop: 15 }}>
                   {content.title}
                 </Text>
               </TouchableOpacity>
@@ -179,7 +176,7 @@ const styles = StyleSheet.create({
     marginRight: 6,
     elevation: 4,
     shadowColor: '#00000040',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 4,
     alignItems: 'center',

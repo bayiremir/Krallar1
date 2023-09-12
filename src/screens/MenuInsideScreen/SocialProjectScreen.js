@@ -9,11 +9,11 @@ import {
   Animated,
   PanResponder,
 } from 'react-native';
-import React, {useState, useRef} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState, useRef } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
-import {settings} from '../../utils/settings';
-import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
+import { settings } from '../../utils/settings';
+import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
 import LinearGradient from 'react-native-linear-gradient';
 
 const SocialProjectScreen = () => {
@@ -40,7 +40,7 @@ const SocialProjectScreen = () => {
     onPanResponderRelease: (e, gestureState) => {
       if (gestureState.moveX > scrollStart) {
         if (scrollRef.current) {
-          scrollRef.current.scrollTo({x: 0, animated: true});
+          scrollRef.current.scrollTo({ x: 0, animated: true });
         }
         Animated.timing(scrollAnim, {
           toValue: 0,
@@ -64,7 +64,7 @@ const SocialProjectScreen = () => {
         useNativeDriver: true,
       }),
     ]),
-    {iterations: -1},
+    { iterations: -1 },
   ).start();
 
   const translateX = scrollAnim.interpolate({
@@ -74,12 +74,14 @@ const SocialProjectScreen = () => {
 
   const navigation = useNavigation();
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={{ backgroundColor: 'white' }}>
       <Header>
         <TouchableOpacity
-          style={{paddingTop: 50, paddingLeft: 10}}
+          style={{ paddingTop: 50, paddingLeft: 10 }}
           onPress={() => navigation.goBack()}>
-          <ArrowLeftIconOutline width={25} height={25} left={3} color="black" />
+          <ArrowLeftIconOutline width={35}
+            height={35}
+            color="black" />
         </TouchableOpacity>
         <View>
           <Image
@@ -108,7 +110,7 @@ const SocialProjectScreen = () => {
           <ScrollView
             ref={scrollRef}
             {...panResponder.panHandlers}
-            style={{backgroundColor: 'white'}}
+            style={{ backgroundColor: 'white' }}
             horizontal={true}
             showsHorizontalScrollIndicator={false}>
             <Animated.View
@@ -116,39 +118,39 @@ const SocialProjectScreen = () => {
               style={{
                 flexDirection: 'row',
                 paddingTop: 30,
-                transform: [{translateX}],
+                transform: [{ translateX }],
               }}>
-              <View style={{flexDirection: 'row', paddingTop: 30}}>
+              <View style={{ flexDirection: 'row', paddingTop: 30 }}>
                 <TouchableOpacity
-                  style={{margin: 20}}
+                  style={{ margin: 20 }}
                   onPress={() => openURL('https://tv.uskudar.edu.tr/')}>
                   <Image
                     source={require('../../../assets/uutv.webp')}
-                    style={{width: 152, height: 76}}
+                    style={{ width: 152, height: 76 }}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{margin: 20}}
+                  style={{ margin: 20 }}
                   onPress={() => openURL('https://www.nevzattarhan.com/')}>
                   <Image
                     source={require('../../../assets/nevzat-tarhan.webp')}
-                    style={{width: 250, height: 61}}
+                    style={{ width: 250, height: 61 }}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{margin: 20}}
+                  style={{ margin: 20 }}
                   onPress={() => openURL('https://psikoyorum.tv/')}>
                   <Image
                     source={require('../../../assets/psikoyorumtv.webp')}
-                    style={{width: 213, height: 76}}
+                    style={{ width: 213, height: 76 }}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{margin: 20}}
+                  style={{ margin: 20 }}
                   onPress={() => openURL('https://mutluyuva.org/')}>
                   <Image
                     source={require('../../../assets/mutlu-yasam.webp')}
-                    style={{width: 340, height: 86}}
+                    style={{ width: 340, height: 86 }}
                   />
                 </TouchableOpacity>
               </View>
@@ -156,7 +158,7 @@ const SocialProjectScreen = () => {
           </ScrollView>
         </View>
 
-        <View style={{borderWidth: 0.2, borderRadius: 10, margin: 10}}>
+        <View style={{ borderWidth: 0.2, borderRadius: 10, margin: 10 }}>
           <View style={styles.rectangleContainer}>
             <View style={styles.headerContainer}>
               <LinearGradient
@@ -167,50 +169,50 @@ const SocialProjectScreen = () => {
             </View>
           </View>
           <View showsHorizontalScrollIndicator={false}>
-            <View style={{paddingTop: 10, alignItems: 'center'}}>
+            <View style={{ paddingTop: 10, alignItems: 'center' }}>
               <TouchableOpacity
-                style={{margin: 20}}
+                style={{ margin: 20 }}
                 onPress={() =>
                   openURL('https://nptipmerkezi.com/feneryolu-tip-merkezi')
                 }>
                 <Image
                   source={require('../../../assets/tip-merkezi.webp')}
-                  style={{width: 300, height: 93}}
+                  style={{ width: 300, height: 93 }}
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={{margin: 20}}
+                style={{ margin: 20 }}
                 onPress={() =>
                   openURL('https://nptipmerkezi.com/etiler-tip-merkezi')
                 }>
                 <Image
                   source={require('../../../assets/tip-merkezi2.webp')}
-                  style={{width: 300, height: 93}}
+                  style={{ width: 300, height: 93 }}
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                style={{margin: 20}}
+                style={{ margin: 20 }}
                 onPress={() => openURL('https://npistanbul.com/')}>
                 <Image
                   source={require('../../../assets/np.webp')}
-                  style={{width: 300, height: 93}}
+                  style={{ width: 300, height: 93 }}
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                style={{margin: 20}}
+                style={{ margin: 20 }}
                 onPress={() => openURL('https://uskudardishastanesi.com/')}>
                 <Image
                   source={require('../../../assets/uu-dis.webp')}
-                  style={{width: 244, height: 76}}
+                  style={{ width: 244, height: 76 }}
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                style={{margin: 20}}
+                style={{ margin: 20 }}
                 onPress={() => openURL('https://uskudar.edu.tr/')}>
                 <Image
                   source={require('../../../assets/uu-logo.webp')}
-                  style={{width: 200}}
+                  style={{ width: 200 }}
                 />
               </TouchableOpacity>
             </View>

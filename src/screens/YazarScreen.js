@@ -377,7 +377,6 @@ const styles = StyleSheet.create({
   },
   menuIcon: {
     position: 'absolute',
-    left: 0,
     top: 60,
     left: 20,
   },

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,9 +9,11 @@ import {
   Dimensions,
   Pressable,
 } from 'react-native';
-import {settings} from '../../utils/settings';
+import { settings } from '../../utils/settings';
 import dateformat from 'dateformat';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { Bars3Icon as Bars3IconOutline, Squares2X2Icon as Squares2X2IconOutline, Square3Stack3DIcon as Square3Stack3DIconOutline } from 'react-native-heroicons/outline';
+
 
 const LastNewScreen = () => {
   const [mostRead, setMostRead] = useState([]);
@@ -33,10 +35,10 @@ const LastNewScreen = () => {
 
   const handleItemPress = slug => {
     const cleanSlug = slug.replace('https://e-psikiyatri.com/', '');
-    navigation.navigate('ContentScreen', {slug: cleanSlug});
+    navigation.navigate('ContentScreen', { slug: cleanSlug });
   };
 
-  const renderMostReadItem = ({item}) => {
+  const renderMostReadItem = ({ item }) => {
     const formattedDate = dateformat(item.updated_at, 'dd/mm/yyyy');
 
     if (isAlternateLayout) {
@@ -53,14 +55,14 @@ const LastNewScreen = () => {
               <>
                 <Text style={styles.alternateTitleText}>{item.title}</Text>
                 <Image
-                  source={{uri: item.image}}
+                  source={{ uri: item.image }}
                   style={styles.alternateImage}
                 />
               </>
             ) : (
               <View style={styles.mostReadItem}>
                 <Image
-                  source={{uri: item.image}}
+                  source={{ uri: item.image }}
                   style={styles.mostReadImage}
                 />
                 <Text style={styles.titleBottomText}>{item.title}</Text>
@@ -78,30 +80,29 @@ const LastNewScreen = () => {
         style={styles.pressableContainer} // Ekledim
       >
         <View style={styles.mostReadItem}>
-          <Image source={{uri: item.image}} style={styles.mostReadImage} />
+          <Image source={{ uri: item.image }} style={styles.mostReadImage} />
           <Text style={styles.titleBottomText}>{item.title}</Text>
         </View>
       </Pressable>
     );
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View>
-        <View style={{marginHorizontal: 0}}>
+        <View style={{ marginHorizontal: 0 }}>
           <View style={styles.featuredNewsContainer}>
             <View style={styles.featuredNewsTextContainer}>
               <View style={styles.featuredNewsWithIcon}>
                 <Text style={styles.featuredNewsText}>En Son Haberler</Text>
                 {isAlternateLayout ? (
-                  <View
+                  <Square3Stack3DIconOutline
                     style={styles.listIcon}
-                    name="border-all"
-                    size={24}
                     color="black"
                     onPress={() => setIsAlternateLayout(!isAlternateLayout)}
                   />
                 ) : (
-                  <View
+
+                  <Squares2X2IconOutline
                     style={styles.listIcon}
                     name="list"
                     size={24}
@@ -116,10 +117,10 @@ const LastNewScreen = () => {
           <ScrollView
             horizontal={false}
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{width: 'auto'}}>
+            contentContainerStyle={{ width: 'auto' }}>
             {mostRead.map((item, index) => (
-              <View key={index.toString()} style={{overflow: 'hidden'}}>
-                {renderMostReadItem({item})}
+              <View key={index.toString()} style={{ overflow: 'hidden' }}>
+                {renderMostReadItem({ item })}
               </View>
             ))}
           </ScrollView>
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
   titleBottomText: {
     fontSize: 16,
     fontWeight: 'bold',
-    margin: 5,
+    color: "black",
   },
 });
 

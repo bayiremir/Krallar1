@@ -14,6 +14,8 @@ import dateformat from "dateformat";
 import { useGetMostReadQuery } from "../../redux/slices/authSlices";
 import { useNavigation } from "@react-navigation/native";
 import { settings } from "../../utils/settings";
+import { Bars3Icon as Bars3IconOutline, Squares2X2Icon as Squares2X2IconOutline, Square3Stack3DIcon as Square3Stack3DIconOutline } from 'react-native-heroicons/outline';
+
 
 const AdultPsychiatry = () => {
   const [isAlternateLayout, setIsAlternateLayout] = useState(false);
@@ -93,15 +95,14 @@ const AdultPsychiatry = () => {
                   Erişkin Psikiyatrisi
                 </Text>
                 {isAlternateLayout ? (
-                  <View
+                  <Square3Stack3DIconOutline
                     style={styles.listIcon}
-                    size={24}
                     color="black"
                     onPress={() => setIsAlternateLayout(!isAlternateLayout)}
                   />
                 ) : (
-                  
-                  <View
+
+                  <Squares2X2IconOutline
                     style={styles.listIcon}
                     name="list"
                     size={24}
@@ -132,7 +133,7 @@ const AdultPsychiatry = () => {
 
 const styles = StyleSheet.create({
   mostReadImage: {
-    resizeMode:"contain",
+    resizeMode: "contain",
     width: 400,
     margin: 10,
     height: 250,
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
   featuredNewsWithIcon: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    width: "100%", 
+    width: "100%",
   },
   featuredNewsText: {
     fontSize: 15,
@@ -207,8 +208,7 @@ const styles = StyleSheet.create({
   titleBottomText: {
     fontSize: 16,
     fontWeight: "bold",
-    margin: 30,
-    color:"red",
+    color: "black",
   },
 });
 

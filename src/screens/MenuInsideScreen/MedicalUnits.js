@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,9 +8,9 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {settings} from '../../utils/settings';
-import {useNavigation} from '@react-navigation/native';
-import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
+import { settings } from '../../utils/settings';
+import { useNavigation } from '@react-navigation/native';
+import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
 import LinearGradient from 'react-native-linear-gradient';
 
 const MedicalUnits = () => {
@@ -52,10 +52,12 @@ const MedicalUnits = () => {
         <TouchableOpacity
           style={styles.menuIcon}
           onPress={() => navigation.goBack()}>
-          <ArrowLeftIconOutline width={25} height={25} left={3} color="black" />
+          <ArrowLeftIconOutline width={35}
+            height={35}
+            color="black" />
         </TouchableOpacity>
       </View>
-      <ScrollView style={{marginBottom: 50}}>
+      <ScrollView style={{ marginBottom: 50 }}>
         <View style={styles.mostReadHeaderContainer}>
           <LinearGradient
             colors={['rgba(64,183,176,1)', 'rgba(64,183,176,0.2)']}
@@ -80,9 +82,9 @@ const MedicalUnits = () => {
               unit.children.map(child => (
                 <TouchableOpacity
                   key={child.id}
-                  style={{marginLeft: 20}}
+                  style={{ marginLeft: 20 }}
                   onPress={() =>
-                    navigation.navigate('ContentScreen', {slug: child.url})
+                    navigation.navigate('ContentScreen', { slug: child.url })
                   }>
                   <Text style={styles.categoryItem}>{child.name}</Text>
                 </TouchableOpacity>
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 4,
     shadowColor: '#00000040',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 4,
     justifyContent: 'flex-start',

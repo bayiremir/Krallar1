@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   View,
   Text,
@@ -9,9 +9,9 @@ import {
   Dimensions,
 } from 'react-native';
 import Header from '../../components/Header';
-import {settings} from '../../utils/settings';
-import {useNavigation} from '@react-navigation/native';
-import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
+import { settings } from '../../utils/settings';
+import { useNavigation } from '@react-navigation/native';
+import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
 import LinearGradient from 'react-native-linear-gradient';
 
 const AboutUsScreen = () => {
@@ -55,15 +55,17 @@ const AboutUsScreen = () => {
           marginHorizontal: 10,
         }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ArrowLeftIconOutline width={25} height={25} left={3} color="black" />
+          <ArrowLeftIconOutline width={35}
+            height={35}
+            color="black" />
         </TouchableOpacity>
         <Image
           source={require('../../../assets/photo/logo.png')}
-          style={{...styles.logo, alignSelf: 'center'}}
+          style={{ ...styles.logo, alignSelf: 'center' }}
         />
         <View />
       </View>
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.mostReadHeaderContainer}>
             <LinearGradient
@@ -79,7 +81,7 @@ const AboutUsScreen = () => {
                 <View style={styles.categoryItem}>
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate('ContentScreen', {slug: unit.url})
+                      navigation.navigate('ContentScreen', { slug: unit.url })
                     }>
                     <View style={styles.categoryItemInnerContainer}>
                       <Text style={styles.categoryItemText}>{unit.name}</Text>
@@ -99,7 +101,7 @@ const AboutUsScreen = () => {
                 {expandedCategories.includes(unit.id) &&
                   unit.children &&
                   unit.children.map(child => (
-                    <TouchableOpacity key={child.id} style={{marginLeft: 20}}>
+                    <TouchableOpacity key={child.id} style={{ marginLeft: 20 }}>
                       <Text style={styles.categoryItem}>{child.name}</Text>
                     </TouchableOpacity>
                   ))}
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 4,
     shadowColor: '#00000040',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 4,
     justifyContent: 'flex-start',

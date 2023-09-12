@@ -373,12 +373,14 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 10,
     marginHorizontal: 10,
+    borderColor:"black",
   },
   categoryTitle: {
     fontWeight: 'bold',
     fontSize: 22,
     marginBottom: 10,
     marginHorizontal: 10,
+    
   },
   categoryItem: {
     marginBottom: 10,
@@ -395,6 +397,7 @@ const styles = StyleSheet.create({
   },
   categoryItemText: {
     fontSize: 18,
+    color:"black",
   },
   logo: {
     resizeMode: 'contain',

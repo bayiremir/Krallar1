@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,11 +10,11 @@ import {
   Dimensions,
 } from 'react-native';
 import axios from 'axios';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import RenderHtml from 'react-native-render-html';
-import {colors} from '../../utils/colors';
-import {settings} from '../../utils/settings';
-import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
+import { colors } from '../../utils/colors';
+import { settings } from '../../utils/settings';
+import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
 import LottieView from 'lottie-react-native';
 
 const GeneticCounseling = () => {
@@ -41,7 +41,7 @@ const GeneticCounseling = () => {
         setIsError(true);
       });
   }, []);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   if (isLoading) {
     return (
@@ -61,7 +61,7 @@ const GeneticCounseling = () => {
 
   return (
     <View>
-      <ScrollView style={{backgroundColor: '#f0f0f0'}}>
+      <ScrollView style={{ backgroundColor: '#f0f0f0' }}>
         <View
           style={{
             position: 'relative',
@@ -75,7 +75,7 @@ const GeneticCounseling = () => {
               width: '100%',
               backgroundColor: colors.darkPurple,
               borderBottomLeftRadius: Dimensions.get('screen').height / 4,
-              transform: [{scaleX: 1.2}],
+              transform: [{ scaleX: 1.2 }],
               borderBottomRightRadius: Dimensions.get('screen').height / 4,
             }}
           />
@@ -88,12 +88,9 @@ const GeneticCounseling = () => {
               marginTop: 60,
             }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <ArrowLeftIconOutline
-                width={25}
-                height={25}
-                left={3}
-                color="black"
-              />
+              <ArrowLeftIconOutline width={35}
+                height={35}
+                color="black" />
             </TouchableOpacity>
             <View />
           </View>
@@ -105,7 +102,7 @@ const GeneticCounseling = () => {
           />
         </View>
         {content ? (
-          <View style={{padding: 12}}>
+          <View style={{ padding: 12 }}>
             <Text
               style={{
                 fontSize: 30,
@@ -119,9 +116,9 @@ const GeneticCounseling = () => {
               <RenderHtml
                 contentWidth={width}
                 tagsStyle={{
-                  p: {fontSize: 20, fontWeight: '500', lineHeight: 24},
+                  p: { fontSize: 20, fontWeight: '500', lineHeight: 24 },
                 }}
-                baseStyle={{lineHeight: 24}}
+                baseStyle={{ lineHeight: 24 }}
                 source={{
                   html: content?.post.replace(/<iframe.*<\/iframe>/, '') || '',
                 }}
@@ -144,7 +141,7 @@ const GeneticCounseling = () => {
                 key={index}
                 style={styles.homeScreenCardContainer}
                 onPress={() =>
-                  navigation.navigate('ContentScreen', {slug: content.slug})
+                  navigation.navigate('ContentScreen', { slug: content.slug })
                 }>
                 <Image
                   source={{
@@ -200,7 +197,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     elevation: 4,
     shadowColor: '#00000040',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 4,
     alignItems: 'center',
