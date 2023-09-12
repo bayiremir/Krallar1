@@ -67,7 +67,7 @@ const LastNewScreen = () => {
               width={25}
               height={25}
               left={3}
-              top= {20}
+              top={20}
               color="black"
             />
           </TouchableOpacity>

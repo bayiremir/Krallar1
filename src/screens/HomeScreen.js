@@ -203,7 +203,7 @@ const HomeScreen = ({navigation}) => {
       <RandevuAl />
       <GoUp scrollViewRef={scrollViewRef} />
       <ScrollView
-        style={{marginBottom: 80, flex: 1}}
+        style={{marginBottom: 50, flex: 1}}
         ref={scrollViewRef}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   alternateImage: {
     width: 150,
-    height: 100,
+    height: settings.CARD_WIDTH / 3,
     marginRight: 10,
   },
   alternateTitleText: {
@@ -207,7 +207,8 @@ const styles = StyleSheet.create({
   titleBottomText: {
     fontSize: 16,
     fontWeight: "bold",
-    margin: 20,
+    margin: 30,
+    color:"red",
   },
 });
 

@@ -150,7 +150,11 @@ const YazarScreen = ({navigation}) => {
           />
           <Bars3IconOutline
             color="black"
-            width={30} height={30} position='absolute' top= {60} left= {20}
+            width={30}
+            height={30}
+            position="absolute"
+            top={60}
+            left={20}
             onPress={() => setMenuOpen(true)}
           />
         </View>
@@ -165,7 +169,12 @@ const YazarScreen = ({navigation}) => {
         </View>
         <View style={styles.searchContainer}>
           <View style={styles.searchInputContainer}>
-            <MagnifyingGlassIconOutline width={25} height={20} left={3} color="black" />
+            <MagnifyingGlassIconOutline
+              width={25}
+              height={20}
+              left={3}
+              color="black"
+            />
             <TextInput
               style={styles.searchInput}
               placeholder="Aramak istediğiniz yazarı yazınız..."

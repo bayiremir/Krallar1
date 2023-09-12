@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,10 +8,10 @@ import {
   ScrollView,
   Dimensions,
   Pressable,
-} from "react-native";
-import { settings } from "../../utils/settings";
-import dateformat from "dateformat";
-import { useNavigation } from "@react-navigation/native";
+} from 'react-native';
+import {settings} from '../../utils/settings';
+import dateformat from 'dateformat';
+import {useNavigation} from '@react-navigation/native';
 
 const LastNewScreen = () => {
   const [mostRead, setMostRead] = useState([]);
@@ -20,24 +20,24 @@ const LastNewScreen = () => {
   const navigation = useNavigation();
 
   const apiUrlMostRead =
-    "https://yp.uskudar.dev/api/content/last/3/tr?token=1&page=1&limit=15&tag_id=216";
+    'https://yp.uskudar.dev/api/content/last/3/tr?token=1&page=1&limit=15&tag_id=216';
 
   useEffect(() => {
     fetch(apiUrlMostRead)
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         setMostRead(data.contents);
       })
-      .catch((error) => console.error(error));
+      .catch(error => console.error(error));
   }, []);
 
-  const handleItemPress = (slug) => {
-    const cleanSlug = slug.replace("https://e-psikiyatri.com/", "");
-    navigation.navigate("ContentScreen", { slug: cleanSlug });
+  const handleItemPress = slug => {
+    const cleanSlug = slug.replace('https://e-psikiyatri.com/', '');
+    navigation.navigate('ContentScreen', {slug: cleanSlug});
   };
 
-  const renderMostReadItem = ({ item }) => {
-    const formattedDate = dateformat(item.updated_at, "dd/mm/yyyy");
+  const renderMostReadItem = ({item}) => {
+    const formattedDate = dateformat(item.updated_at, 'dd/mm/yyyy');
 
     if (isAlternateLayout) {
       return (
@@ -48,20 +48,19 @@ const LastNewScreen = () => {
               isAlternateLayout
                 ? styles.alternatePressableContainer
                 : styles.pressableContainer
-            }
-          >
+            }>
             {isAlternateLayout ? (
               <>
                 <Text style={styles.alternateTitleText}>{item.title}</Text>
                 <Image
-                  source={{ uri: item.image }}
+                  source={{uri: item.image}}
                   style={styles.alternateImage}
                 />
               </>
             ) : (
               <View style={styles.mostReadItem}>
                 <Image
-                  source={{ uri: item.image }}
+                  source={{uri: item.image}}
                   style={styles.mostReadImage}
                 />
                 <Text style={styles.titleBottomText}>{item.title}</Text>
@@ -79,16 +78,16 @@ const LastNewScreen = () => {
         style={styles.pressableContainer} // Ekledim
       >
         <View style={styles.mostReadItem}>
-          <Image source={{ uri: item.image }} style={styles.mostReadImage} />
+          <Image source={{uri: item.image}} style={styles.mostReadImage} />
           <Text style={styles.titleBottomText}>{item.title}</Text>
         </View>
       </Pressable>
     );
   };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1}}>
       <View>
-        <View style={{ marginHorizontal: 0 }}>
+        <View style={{marginHorizontal: 0}}>
           <View style={styles.featuredNewsContainer}>
             <View style={styles.featuredNewsTextContainer}>
               <View style={styles.featuredNewsWithIcon}>
@@ -117,11 +116,10 @@ const LastNewScreen = () => {
           <ScrollView
             horizontal={false}
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ width: "auto" }}
-          >
+            contentContainerStyle={{width: 'auto'}}>
             {mostRead.map((item, index) => (
-              <View key={index.toString()} style={{ overflow: "hidden" }}>
-                {renderMostReadItem({ item })}
+              <View key={index.toString()} style={{overflow: 'hidden'}}>
+                {renderMostReadItem({item})}
               </View>
             ))}
           </ScrollView>
@@ -138,54 +136,54 @@ const styles = StyleSheet.create({
     height: 250,
   },
   mostReadItem: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   featuredNewsContainer: {
     marginBottom: 30,
   },
   featuredNewsTextContainer: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    position: "relative",
-    backgroundColor: "rgba(64,183,176,0.3)",
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    position: 'relative',
+    backgroundColor: 'rgba(64,183,176,0.3)',
   },
   featuredNewsWithIcon: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    width: '100%',
   },
   featuredNewsText: {
     fontSize: 15,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginLeft: 20,
     marginTop: 10,
-    color: "#ec5051",
+    color: '#ec5051',
   },
   listIcon: {
-    position: "absolute",
+    position: 'absolute',
     right: 20,
     top: 10,
   },
   featuredNewsLine: {
     height: 3,
-    width: "32%",
-    backgroundColor: "#952323",
-    alignSelf: "flex-start",
+    width: '32%',
+    backgroundColor: '#952323',
+    alignSelf: 'flex-start',
     marginLeft: 20,
     marginBottom: 10,
     marginTop: 5,
   },
   pressableContainer: {
-    backgroundColor: "white",
-    width: "100%",
+    backgroundColor: 'white',
+    width: '100%',
     height: settings.CARD_WIDTH * 1.56,
     marginBottom: 10,
   },
   alternatePressableContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "white",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
     padding: 10,
   },
   alternateImage: {
@@ -196,17 +194,17 @@ const styles = StyleSheet.create({
   alternateTitleText: {
     flex: 1,
     fontSize: 18,
-    fontWeight: "bold",
-    color: "black",
+    fontWeight: 'bold',
+    color: 'black',
   },
   divider: {
     height: 0.3,
-    backgroundColor: "grey",
-    width: "100%", // to make sure it takes the full width
+    backgroundColor: 'grey',
+    width: '100%', // to make sure it takes the full width
   },
   titleBottomText: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     margin: 5,
   },
 });
