@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -11,18 +11,18 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import RenderHtml from 'react-native-render-html';
-import { useNavigation } from '@react-navigation/native';
-import { WebView } from 'react-native-webview';
-import { settings } from '../../utils/settings';
+import {useNavigation} from '@react-navigation/native';
+import {WebView} from 'react-native-webview';
+import {settings} from '../../utils/settings';
 import GoUp from '../../components/GoUp/GoUp';
 import LottieView from 'lottie-react-native';
-import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
+import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
 
-const ContentScreen = ({ route }) => {
+const ContentScreen = ({route}) => {
   const navigation = useNavigation();
   const scrollViewRef = useRef();
   const [content, setContent] = useState(null);
-  const { slug } = route.params;
+  const {slug} = route.params;
   const animation = useRef(null);
   const HeaderHeight = Dimensions.get('screen').height * 0.3;
 
@@ -72,7 +72,7 @@ const ContentScreen = ({ route }) => {
     fetchData();
   }, [slug]);
 
-  const { width } = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const fixedImageURL =
     content?.image?.replace(/^about:\/\/\//, 'https://') ||
     'https://www.example.com/default-image.jpg';
@@ -86,10 +86,10 @@ const ContentScreen = ({ route }) => {
   const videoIframe = getVideoIframe(content?.post || '');
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <GoUp scrollViewRef={scrollViewRef}></GoUp>
       {content ? (
-        <ScrollView style={{ backgroundColor: 'white' }} ref={scrollViewRef}>
+        <ScrollView style={{backgroundColor: 'white'}} ref={scrollViewRef}>
           <View
             style={{
               position: 'relative',
@@ -107,7 +107,7 @@ const ContentScreen = ({ route }) => {
               }}>
               <TouchableOpacity
                 onPress={() => navigation.goBack()}
-                style={{ position: 'absolute', left: 26, top: 60 }}>
+                style={{position: 'absolute', left: 26, top: 60}}>
                 <ArrowLeftIconOutline
                   width={35}
                   height={35}
@@ -124,30 +124,32 @@ const ContentScreen = ({ route }) => {
             <View style={styles.container}>
               {fixedImageURL !==
                 'https://www.example.com/default-image.jpg' && (
-                  <Image
-                    source={{
-                      uri: fixedImageURL,
-                    }}
-                    style={{
-                      width: '100%',
-                      height: 200,
-                      borderRadius: 30,
-                      marginBottom: 20,
-                    }}
-                    onError={error => {
-                      console.log('Image loading error:', error);
-                    }}
-                  />
-                )}
+                <Image
+                  source={{
+                    uri: fixedImageURL,
+                  }}
+                  style={{
+                    width: '100%',
+                    height: 200,
+                    borderRadius: 30,
+                    marginBottom: 20,
+                  }}
+                  onError={error => {
+                    console.log('Image loading error:', error);
+                  }}
+                />
+              )}
               <Text
                 style={{
                   fontSize: 28,
-                  color: "black",
+                  color: 'black',
                   fontWeight: 'bold',
                   textAlign: 'center',
                 }}>
                 {content.title}
               </Text>
+
+              <View style={styles.featuredNewsLine}></View>
 
               {videoIframe && (
                 <WebView
@@ -178,32 +180,31 @@ const ContentScreen = ({ route }) => {
                   a: {
                     paddingTop: 10,
                   },
-                  h1: { paddingTop: 20 },
-                  h2: { paddingTop: 20 },
-                  h3: { paddingTop: 30 },
-                  h4: { paddingTop: 20 },
-                  h5: { paddingTop: 20 },
-                  h6: { paddingTop: 30 },
+                  h1: {paddingTop: 20, lineHeight: 32, fontSize: 22},
+                  h2: {paddingTop: 20},
+                  h3: {paddingTop: 20},
+                  h4: {paddingTop: 20},
+                  h5: {paddingTop: 20},
+                  h6: {paddingTop: 20},
                 }}
-                baseStyle={{ lineHeight: 24, color: "black" }}
+                baseStyle={{lineHeight: 24, color: 'black'}}
                 source={{
                   html: content?.post.replace(/<iframe.*<\/iframe>/, '') || '',
                 }}
               />
             </View>
           </View>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', margin: 20 }}>
+          <View style={{flexDirection: 'row', flexWrap: 'wrap', margin: 20}}>
             {content?.contents?.map((item, index) => (
               <TouchableOpacity
                 key={item.id}
                 onPress={() =>
-                  navigation.navigate('ContentInside', { slug: item.slug })
+                  navigation.navigate('ContentInside', {slug: item.slug})
                 }
                 style={[
                   {
                     width: '100%',
                     padding: '1%',
-
                   },
                   styles.homeScreenCardContainer,
                 ]}>
@@ -213,14 +214,19 @@ const ContentScreen = ({ route }) => {
                       item.image || 'https://www.example.com/default-image.jpg',
                   }}
                   style={{
-
                     width: '100%',
                     height: settings.CARD_WIDTH * 0.4,
                     borderRadius: 15,
                   }}
                 />
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 12, textAlign: 'center', margin: 10, color: "black" }}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      textAlign: 'center',
+                      margin: 10,
+                      color: 'black',
+                    }}>
                     {item.title}
                   </Text>
                 </View>
@@ -283,7 +289,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 12,
     textAlign: 'center',
-    color: "black",
+    color: 'black',
   },
   container: {
     flex: 1,
@@ -299,10 +305,19 @@ const styles = StyleSheet.create({
     marginTop: 20,
     elevation: 4,
     shadowColor: '#00000040',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.4,
     shadowRadius: 4,
     alignItems: 'center',
     margin: 10,
+  },
+  featuredNewsLine: {
+    height: 1,
+    width: '90%',
+    backgroundColor: 'rgba(64,183,176,1)',
+    marginBottom: 10,
+    marginTop: 5,
+    justifyContent: 'center',
+    marginLeft: 16,
   },
 });

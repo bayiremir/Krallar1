@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,18 +9,42 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import { settings } from '../../utils/settings';
-import { Divider } from 'react-native-paper';
+import {settings} from '../../utils/settings';
+import {Divider} from 'react-native-paper';
 import dateformat from 'dateformat';
-import { colors } from '../../utils/colors';
-import { useNavigation } from '@react-navigation/native';
+import {colors} from '../../utils/colors';
+import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/Header';
-import { ArrowLeftIcon as ArrowLeftIconOutline } from 'react-native-heroicons/outline';
+import {ArrowLeftIcon as ArrowLeftIconOutline} from 'react-native-heroicons/outline';
 import LinearGradient from 'react-native-linear-gradient';
 
 const LastNewScreen = () => {
   const [mostRead, setMostRead] = useState([]);
   const navigation = useNavigation();
+
+  const turkishMonths = [
+    'Ocak',
+    'Şubat',
+    'Mart',
+    'Nisan',
+    'Mayıs',
+    'Haziran',
+    'Temmuz',
+    'Ağustosz',
+    'Eylül',
+    'Ekim',
+    'Kasım',
+    'Aralık',
+  ];
+
+  const formatDateToTurkish = dateString => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = turkishMonths[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
 
   const apiUrlMostRead =
     'https://yp.uskudar.dev/api/content/staff/3/tr?token=1';
@@ -36,17 +60,17 @@ const LastNewScreen = () => {
 
   const handleItemPress = slug => {
     const cleanSlug = slug.replace('https://e-psikiyatri.com/', '');
-    navigation.navigate('ContentScreen', { slug: cleanSlug });
+    navigation.navigate('ContentScreen', {slug: cleanSlug});
   };
 
-  const renderMostReadItem = ({ item }) => (
+  const renderMostReadItem = ({item}) => (
     <TouchableOpacity onPress={() => handleItemPress(item.slug)}>
       <View style={styles.mostReadItem}>
-        <Image source={{ uri: item.image }} style={styles.mostReadImage} />
-        <View style={{ paddingLeft: 10 }}>
+        <Image source={{uri: item.image}} style={styles.mostReadImage} />
+        <View style={{paddingLeft: 10}}>
           <Text style={styles.mostReadText}>{item.title}</Text>
           <Text style={styles.updateText}>
-            {dateformat(item.updated_at, 'dd mmm yyyy')}
+            {formatDateToTurkish(item.updated_at)}
           </Text>
           <Text style={styles.updateText}>
             {item.staff.name} {item.staff.surname}
@@ -57,15 +81,13 @@ const LastNewScreen = () => {
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Header>
         <ScrollView>
           <TouchableOpacity
-            style={{ paddingTop: 40, paddingBottom: 20, paddingLeft: 20 }}
+            style={{paddingTop: 40, paddingBottom: 20, paddingLeft: 20}}
             onPress={() => navigation.goBack()}>
-            <ArrowLeftIconOutline width={35}
-              height={35}
-              color="black" />
+            <ArrowLeftIconOutline width={35} height={35} color="black" />
           </TouchableOpacity>
           <View>
             <Image
@@ -73,7 +95,7 @@ const LastNewScreen = () => {
               style={styles.logo}
             />
           </View>
-          <View style={{ marginHorizontal: 20 }}>
+          <View style={{marginHorizontal: 20}}>
             <View style={styles.homeScreenCardContainer}>
               <View style={styles.rectangleContainer}>
                 <View style={styles.headerContainer}>
@@ -87,8 +109,8 @@ const LastNewScreen = () => {
               {mostRead.map((item, index) => (
                 <View
                   key={index.toString()}
-                  style={{ borderRadius: 20, overflow: 'hidden' }}>
-                  {renderMostReadItem({ item })}
+                  style={{borderRadius: 20, overflow: 'hidden'}}>
+                  {renderMostReadItem({item})}
                   <Divider />
                 </View>
               ))}
@@ -132,7 +154,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 4,
     shadowColor: '#00000040',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.4,
     shadowRadius: 4,
     justifyContent: 'flex-start',
