@@ -141,9 +141,9 @@ const AdultPsychiatry = () => {
 const styles = StyleSheet.create({
   mostReadImage: {
     resizeMode: 'contain',
-    width: 400,
     margin: 10,
-    height: 250,
+    height: settings.CARD_WIDTH ,
+    width: settings.CARD_WIDTH * 2,
   },
   mostReadItem: {
     alignItems: 'center',
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   pressableContainer: {
     backgroundColor: 'white',
     width: '100%',
-    height: settings.CARD_WIDTH * 1.6,
+    height: settings.CARD_WIDTH * 1.4,
     marginBottom: 10,
   },
   alternatePressableContainer: {
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   alternateImage: {
-    width: 150,
+    width:settings.CARD_WIDTH * 0.6,
     height: settings.CARD_WIDTH / 3,
     marginRight: 10,
   },
@@ -208,8 +208,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   divider: {
-    height: 0.3,
-    backgroundColor: 'grey',
+    height: 0.5,
+    backgroundColor: 'black',
     width: '100%', // to make sure it takes the full width
   },
   titleBottomText: {

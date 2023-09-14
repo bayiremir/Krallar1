@@ -3,6 +3,7 @@ import { Animated, Image, View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import Navigation from "./StackNavigator";
 import { store } from "./src/redux/store";
+import { settings } from './src/utils/settings';
 
 export default function App() {
   const [animation] = useState(new Animated.Value(0.3));
@@ -11,7 +12,7 @@ export default function App() {
   useEffect(() => {
     Animated.timing(animation, {
       toValue: 1,
-      duration: 1000, 
+      duration: 1000,
       useNativeDriver: true,
     }).start(() => {
       setTimeout(() => {
@@ -25,8 +26,8 @@ export default function App() {
       <View style={styles.container}>
         <Animated.Image
           style={{
-            height: 300,
-            width: 400,
+            height: settings.CARD_WIDTH,
+            width: settings.CARD_WIDTH * 2,
             resizeMode: "contain",
             transform: [{ scale: animation }],
           }}

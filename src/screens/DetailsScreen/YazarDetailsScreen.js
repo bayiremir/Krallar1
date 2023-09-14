@@ -150,16 +150,21 @@ const YazarDetail = ({ route }) => {
           <RenderHtml
             contentWidth={width}
             tagsStyles={{
-              a: {
-                fontSize: 12,
-                fontWeight: '500',
-                margin: 20,
-                paddingTop: 2,
+              p: {
+                paddingTop: 10,
+                marginBottom: 10,
               },
-              h1: { paddingLeft: 20 },
-              h2: { paddingLeft: 20 },
-              h3: { paddingLeft: 20 },
+              a: {
+                paddingTop: 10,
+              },
+              h1: { paddingTop: 20, lineHeight: 32, fontSize: 22 },
+              h2: { paddingTop: 20 },
+              h3: { paddingTop: 20 },
+              h4: { paddingTop: 20 },
+              h5: { paddingTop: 20 },
+              h6: { paddingTop: 20 },
             }}
+            baseStyle={{ lineHeight: 18, color: 'black' }}
             source={{ html: showFullText ? yazar.resume : firstHalfHtml }}
           />
 
@@ -207,6 +212,7 @@ const YazarDetail = ({ route }) => {
                     textAlign: 'center',
                     fontWeight: '500',
                     margin: 15,
+                    color: 'black'  // Bu satır yazının rengini siyah yapar
                   }}>
                   {content.title}
                 </Text>
@@ -249,6 +255,13 @@ export default YazarDetail;
 
 const styles = StyleSheet.create({
   container: {},
+  textStyle: {
+    fontSize: 12,
+    textAlign: 'center',
+    fontWeight: '500',
+    margin: 15,
+    color: 'black'
+  },
   yazarImage: {
     width: settings.CARD_WIDTH * 1.15,
     height: settings.CARD_WIDTH * 0.8,
@@ -259,6 +272,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 10,
+    color: "black",
   },
   bioHeader: {
     fontSize: 28,
@@ -266,6 +280,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 10,
+    color: "black",
+
   },
   yazarBio: {
     fontSize: 16,
