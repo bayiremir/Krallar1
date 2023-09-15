@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -12,8 +12,8 @@ import {
   FlatList,
   Divider,
 } from 'react-native';
-import { settings } from '../utils/settings';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import {settings} from '../utils/settings';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import RandevuAl from '../components/RandevuAl/RandevuAl';
 import LinearGradient from 'react-native-linear-gradient';
 import {
@@ -31,7 +31,7 @@ const CategoryScreen = () => {
   const isFocused = useIsFocused();
 
   const navigateToContent = slug => {
-    navigation.navigate('ContentScreen', { slug });
+    navigation.navigate('ContentScreen', {slug});
   };
 
   const panResponder = useRef(
@@ -89,22 +89,22 @@ const CategoryScreen = () => {
 
   const filteredCategories = searchText
     ? Object.keys(categories).reduce((acc, key) => {
-      categories[key].forEach(cat => {
-        if (
-          cat.name.toLowerCase().includes(searchText.toLowerCase()) ||
-          (cat.children &&
-            cat.children.some(child =>
-              child.name.toLowerCase().includes(searchText.toLowerCase()),
-            ))
-        ) {
-          if (!acc[key]) {
-            acc[key] = [];
+        categories[key].forEach(cat => {
+          if (
+            cat.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            (cat.children &&
+              cat.children.some(child =>
+                child.name.toLowerCase().includes(searchText.toLowerCase()),
+              ))
+          ) {
+            if (!acc[key]) {
+              acc[key] = [];
+            }
+            acc[key].push(cat);
           }
-          acc[key].push(cat);
-        }
-      });
-      return acc;
-    }, {})
+        });
+        return acc;
+      }, {})
     : categories;
 
   const menuData = [
@@ -152,30 +152,30 @@ const CategoryScreen = () => {
   ];
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <RandevuAl />
-      <View style={{ flex: 1, marginBottom: 50 }}>
+      <View style={{flex: 1, marginBottom: 50}}>
         <ScrollView>
           <View style={styles.logoContainer}>
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                left: 20,
+              }}
+              onPress={() => setMenuOpen(true)}>
+              <Bars3IconOutline color="black" width={30} height={30} />
+            </TouchableOpacity>
             <Image
               source={require('../../assets/photo/logo.png')}
               style={styles.logo}
-            />
-            <Bars3IconOutline
-              color="black"
-              width={30}
-              height={30}
-              position="absolute"
-              left={20}
-              onPress={() => setMenuOpen(true)}
             />
           </View>
 
           <View style={styles.mostReadHeaderContainer}>
             <LinearGradient
               colors={['rgba(64,183,176,1)', 'rgba(64,183,176,0.2)']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1.4, y: 0 }}
+              start={{x: 0, y: 0}}
+              end={{x: 1.4, y: 0}}
               style={styles.rectangleContainer}>
               <Text style={styles.headerText}>Kategoriler</Text>
             </LinearGradient>
@@ -190,6 +190,7 @@ const CategoryScreen = () => {
               />
               <TextInput
                 style={styles.searchInput}
+                placeholderTextColor={"black"}
                 placeholder="Aramak istediğiniz kategorinin adını yazınız..."
                 onChangeText={text => setSearchText(text)}
               />
@@ -228,14 +229,14 @@ const CategoryScreen = () => {
                     <View>
                       <TouchableOpacity
                         onPress={() => navigateToContent(cat.url)}
-                        style={{ marginLeft: 20 }}>
+                        style={{marginLeft: 20}}>
                         <Text style={styles.categoryItem}>{cat.name}</Text>
                       </TouchableOpacity>
                       {cat.children.map(child => (
                         <TouchableOpacity
                           key={child.id}
                           onPress={() => navigateToContent(child.url)}
-                          style={{ marginLeft: 40 }}>
+                          style={{marginLeft: 40}}>
                           <Text style={styles.categoryItem}>{child.name}</Text>
                         </TouchableOpacity>
                       ))}
@@ -272,13 +273,13 @@ const CategoryScreen = () => {
                 <FlatList
                   data={menuData}
                   keyExtractor={(item, index) => index.toString()}
-                  renderItem={({ item }) => (
+                  renderItem={({item}) => (
                     <TouchableOpacity
                       onPress={() => {
                         if (item.url) {
                           Linking.openURL(item.url);
                         } else if (item.screen) {
-                          navigation.navigate(item.screen, { slug: item.slug });
+                          navigation.navigate(item.screen, {slug: item.slug});
                         }
                       }}>
                       <View
@@ -289,19 +290,19 @@ const CategoryScreen = () => {
                         }}>
                         <Image
                           source={item.icon}
-                          style={{ width: 30, height: 30, marginRight: 15 }}
+                          style={{width: 30, height: 30, marginRight: 15}}
                         />
                         <Text>{item.text}</Text>
                       </View>
                     </TouchableOpacity>
                   )}
                   ItemSeparatorComponent={() => (
-                    <View style={{ height: 1, backgroundColor: '#E0E0E0' }} />
+                    <View style={{height: 1, backgroundColor: '#E0E0E0'}} />
                   )}
                 />
 
-                <View >
-                  <Text style={{ textAlign: 'center' }}>Versiyon 0.1</Text>
+                <View>
+                  <Text style={{textAlign: 'center'}}>Versiyon 0.1</Text>
                 </View>
               </View>
             </View>
@@ -365,21 +366,21 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     shadowColor: '#00000040',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.4,
     shadowRadius: 4,
     justifyContent: 'flex-start',
     padding: 15,
     marginVertical: 10,
     marginHorizontal: 10,
-    borderColor: "black",
+    borderColor: 'black',
   },
   categoryTitle: {
     fontWeight: 'bold',
     fontSize: 22,
     marginBottom: 10,
     marginHorizontal: 10,
-
+    color:"black",
   },
   categoryItem: {
     marginBottom: 10,
@@ -396,7 +397,7 @@ const styles = StyleSheet.create({
   },
   categoryItemText: {
     fontSize: 18,
-    color: "black",
+    color: 'black',
   },
   logo: {
     resizeMode: 'contain',
@@ -435,12 +436,11 @@ const styles = StyleSheet.create({
     left: 20,
   },
   logoContainer: {
-    width: "100%",
+    width: '100%',
     height: settings.CARD_WIDTH / 1.9,
-    flexDirection: 'row',   // elemanları yatay olarak sıralamak için
-    alignItems: 'center',   // elemanları dikey olarak merkeze hizalamak için
+    flexDirection: 'row', // elemanları yatay olarak sıralamak için
+    alignItems: 'center', // elemanları dikey olarak merkeze hizalamak için
     justifyContent: 'center',
     backgroundColor: 'rgba(64,183,176,0.3)',
-
   },
 });

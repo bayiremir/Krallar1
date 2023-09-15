@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginBottom: 10,
     marginHorizontal: 10,
+    color:"black",
   },
   categoryItem: {
     margin: 5,
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
   },
   categoryItemText: {
     fontSize: 18,
+    color:"black",
   },
   logo: {
     resizeMode: 'contain',
@@ -200,6 +202,7 @@ const styles = StyleSheet.create({
   },
   unitItemText: {
     fontSize: 18,
+    color:"black",
   },
   childItemContainer: {
     marginLeft: 20,

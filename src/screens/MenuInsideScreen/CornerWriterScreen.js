@@ -179,7 +179,8 @@ const styles = StyleSheet.create({
   },
   mostReadText: {
     flex: 1,
-    width: '60%',
+    width: '50%',
+    color:"black",
     paddingBottom: 10,
   },
   updateText: {

@@ -34,7 +34,10 @@ const RandevuAl = () => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <PaperAirplaneIcon width={25} height={25} left={3} color="white" />
+        <PaperAirplaneIcon
+          style={{ transform: [{ rotate: '320deg' }] }} 
+        width={25} height={25}  left={3} color="white"  />
+        
         <Text style={{color: 'white', paddingLeft: 10}}>Randevu Al</Text>
       </TouchableOpacity>
     </View>

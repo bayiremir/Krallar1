@@ -108,6 +108,7 @@ const OurPublications = () => {
                 fontSize: 30,
                 fontWeight: 'bold',
                 textAlign: 'center',
+                color:"black"
               }}>
               {content.title}
             </Text>
@@ -150,7 +151,7 @@ const OurPublications = () => {
                     borderRadius: 20,
                   }}
                 />
-                <Text style={{ textAlign: 'center', paddingTop: 15 }}>
+                <Text style={{ textAlign: 'center', paddingTop: 15 ,  color:"black"}}>
                   {content.title}
                 </Text>
               </TouchableOpacity>

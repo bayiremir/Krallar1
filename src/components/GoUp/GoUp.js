@@ -34,7 +34,12 @@ const GoUp = ({ scrollViewRef }) => {
           alignItems: 'center',
           backgroundColor: "transparent",
         }}>
-        <ArrowUpIconOutline width={25} height={20} color="white" fill="transparent" />
+        <ArrowUpIconOutline 
+          width={25} 
+          height={20} 
+          color="white" 
+          fill="transparent"
+        />
       </TouchableOpacity>
     </View>
   );

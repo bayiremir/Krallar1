@@ -109,6 +109,7 @@ const GeneticCounseling = () => {
                 fontWeight: 'bold',
                 textAlign: 'center',
                 paddingTop: 20,
+                color:"black",
               }}>
               {content.title}
             </Text>
@@ -116,9 +117,9 @@ const GeneticCounseling = () => {
               <RenderHtml
                 contentWidth={width}
                 tagsStyle={{
-                  p: { fontSize: 20, fontWeight: '500', lineHeight: 24 },
+                  p: { fontSize: 20, fontWeight: '500', lineHeight: 24 , color:"black" },
                 }}
-                baseStyle={{ lineHeight: 24 }}
+                baseStyle={{ lineHeight: 24, color:"black" }}
                 source={{
                   html: content?.post.replace(/<iframe.*<\/iframe>/, '') || '',
                 }}
@@ -151,7 +152,7 @@ const GeneticCounseling = () => {
                   }}
                   style={{
                     width: '100%',
-                    width: settings.CARD_WIDTH * 0.9,
+                    width: settings.CARD_WIDTH * 0.8,
                     height: settings.CARD_WIDTH * 0.5,
                     justifyContent: 'center',
                     borderRadius: 20,
@@ -163,6 +164,7 @@ const GeneticCounseling = () => {
                     textAlign: 'center',
                     fontWeight: '500',
                     marginTop: 10,
+                    color:"black",
                   }}>
                   {content.title}
                 </Text>
@@ -190,7 +192,7 @@ const styles = StyleSheet.create({
   homeScreenCardContainer: {
     borderWidth: 0.5,
     borderColor: '#f0f0f0',
-    width: settings.CARD_WIDTH * 0.9,
+    width: settings.CARD_WIDTH * 0.8,
     height: settings.CARD_WIDTH * 0.8,
     backgroundColor: 'white',
     borderRadius: 20,
