@@ -39,11 +39,11 @@ const HomeScreen = ({ navigation }) => {
       icon: require('../../assets/photo/icons/care.png'),
       screen: 'MedicalUnits',
     },
-    // {
-    //   text: 'Psikolojik Testler',
-    //   icon: require('../../assets/photo/icons/quiz.png'),
-    //   screen: 'QuizScreen',
-    // },
+     {
+       text: 'Psikolojik Testler',
+       icon: require('../../assets/photo/icons/quiz.png'),
+       screen: 'NotificationScreen',
+    },
     {
       text: 'Hakkımızda',
       slug: '/hakimizda',

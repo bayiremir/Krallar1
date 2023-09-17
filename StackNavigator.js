@@ -31,6 +31,7 @@ import {
   UserIcon as UserIconSolidOutline,
   GlobeAltIcon as GlobeAltIconSolidOutline,
 } from 'react-native-heroicons/solid';
+import NotificationScreen from './src/screens/DetailsScreen/NotificationScreen';
 
 function BottomTabs() {
   const Tab = createBottomTabNavigator();
@@ -206,6 +207,11 @@ function Navigation() {
         <Stack.Screen
           name="QuizScreen"
           component={QuizScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="NotificationScreen"
+          component={NotificationScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
